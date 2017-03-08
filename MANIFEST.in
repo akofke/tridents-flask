@@ -1,0 +1,2 @@
+graft tridents/templates
+graft tridents/static

@@ -1,0 +1,1 @@
+from .tridents import app
