@@ -6,8 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}{% endblock %} • Tri-County Rugby</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+
+    {% block head %}{% endblock %}
+
+    {% macro active(this_page) -%}
+        {% if this_page == active_page %}is-active{% endif %}
+    {% endmacro %}
 </head>
 <body>
 
+<nav class="nav has-shadow is-dark">
+    <div class="container">
+        <div class="nav-left">
+            <span class="nav-item"></span>
+        </div>
+
+        <div class="nav-center">
+            <a href="" class="nav-item {{ active('contact') }}">Contact</a>
+
+            <a href="" class="nav-item">
+                <figure class="image" id="Navbar-logo">
+                    <img src="{{ url_for('static', filename='img/rugby_trimmed.svg.png') }}" alt="Home">
+                </figure>
+            </a>
+
+            <a href="" class="nav-item {{ active('about') }}">About Us</a>
+        </div>
+
+        <div class="nav-right">
+            <span class="nav-item">
+                <button class="button is-success is-outlined">Log In</button>
+            </span>
+        </div>
+    </div>
+</nav>
+
+<main role="main" class="section">
+    {% block content %}{% endblock %}
+</main>
+
+{% block js %}{% endblock %}
 </body>
 </html>
+

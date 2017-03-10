@@ -50,6 +50,6 @@ def callback_handling():
 
 @app.route('/home')
 def home():
-    return render_template('home.html', user=session.get('profile', default=None))
+    return render_template('home.html', user=session.get('profile'))
 
 
