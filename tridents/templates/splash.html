@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}">
+    
+    <title>Tri-County Rugby</title>
+</head>
+<body>
+
+<section class="hero is-fullheight is-dark" id="SplashPage-hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-desktop" id="SplashPage-banner">
+                <div class="column is-narrow">
+                    <figure class="image" id="SplashPage-logo">
+                        <img src="{{ url_for('static', filename='img/rugby_trimmed.svg.png') }}" alt="">
+                    </figure>
+                </div>
+
+                <div class="column" id="SplashPage-headlines">
+                    <h1 class="title">Tri-County Tridents</h1>
+                    <h3 class="subtitle">Rugby Football Club</h3>
+
+                    <p>A social rugby club based in Lockport, NY welcoming players of all ages and experience</p>
+                </div>
+            </div>
+
+            <div class="columns has-text-centered" id="SplashPage-nav">
+                <div class="column">
+                    <a href="{{ url_for('home') }}" class="button is-info is-inverted is-large is-outlined">News & Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

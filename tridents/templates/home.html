@@ -1,2 +1,51 @@
 {% extends 'layout.html' %}
 {% block title %}Home{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/fullcalendar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/gcal.min.js') }}"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+            googleCalendarApiKey: 'AIzaSyBJcgtG_tpKU4ewCCTkym4rNtpKisS8KUA',
+            eventSources: [
+                {
+                    googleCalendarId: 'tricountyrugby@gmail.com',
+                    className: 'gcal-other'
+                },
+                {
+                    googleCalendarId: 'aunql8gg3cftpplsme4g83b068@group.calendar.google.com',
+                    className: 'gcal-games'
+                },
+                {
+                    googleCalendarId: '05fenan6ias7hubcpor0fepla4@group.calendar.google.com',
+                    className: 'gcal-practices'
+                },
+                {
+                    googleCalendarId: '8jac2dm6qpnrjm1k9n329nt4c4@group.calendar.google.com',
+                    className: 'gcal-social'
+                }
+            ]
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="columns">
+            <div class="column">
+                <div class="box" id="calendar">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

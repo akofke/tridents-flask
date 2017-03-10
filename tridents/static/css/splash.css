@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "league-gothic";
+    src: url("/static/fonts/leaguegothic-regular-webfont.woff") format("woff");
+}
+
+#SplashPage-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url("/static/img/team-orig-edit.jpg") no-repeat center center fixed;
+
+    background-size: cover;
+}
+
+#SplashPage-banner {
+    align-items: center;
+}
+
+#SplashPage-nav {
+    padding-top: 20px;
+}
+
+#SplashPage-headlines {
+    font-family: league-gothic, sans-serif;
+}
+
+#SplashPage-headlines > .title {
+    font-size: 8rem;
+}
+
+#SplashPage-headlines > .subtitle {
+    font-size: 5rem;
+}
+
+#SplashPage-headlines > p {
+    font-size: 2.5rem;
+}
+
+#SplashPage-logo {
+    max-width: 15vw;
+    min-width: 190px;
+    margin-right: 15px;
+}
+
+/* center the logo above the headlines on smaller screens */
+@media (max-width: 999px) {
+    #SplashPage-logo {
+        margin: auto;
+        min-width: 200px;
+    }
+}
+
+#SplashPage-logo > img {
+    filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+}

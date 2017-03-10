@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session, redirect, render_template, url_for
+from flask import Flask, request, jsonify, session, redirect, render_template, url_for, logging
 
 import os
 import json
@@ -13,15 +13,16 @@ app.config.from_object(__name__)
 
 # default config
 app.config.update(
-    SECRET_KEY="development key"
+    SECRET_KEY="development key",
+    AUTH0_CALLBACK_URL="http://localhost:5000/callback"
 )
 
 # load additional config from the file at FLASK_CONFIG
-app.config.from_envvar('FLASK_CONFIG', silent=True)
+app.config.from_envvar('FLASK_CONFIG', silent=False)
 
 
 @app.route('/callback')
-def callback_handling():
+def callback():
     code = request.args.get('code')
 
     json_header = {'content-type': 'application/json'}
@@ -31,12 +32,13 @@ def callback_handling():
     token_payload = {
         'client_id': app.config.get('AUTH0_CLIENT_ID'),
         'client_secret': app.config.get('AUTH0_CLIENT_SECRET'),
-        'redirect_uri': url_for('callback_handling'),
+        'redirect_uri': app.config.get('AUTH0_CALLBACK_URL'),
         'code': code,
         'grant_type': 'authorization_code'
     }
 
     token_info = requests.post(token_url, data=json.dumps(token_payload), headers=json_header).json()
+    print(token_info)
 
     user_url = "https://{domain}/userinfo?access_token={access_token}"\
         .format(domain=app.config.get('AUTH0_CLIENT_DOMAIN'), access_token=token_info['access_token'])
@@ -45,11 +47,17 @@ def callback_handling():
 
     session['profile'] = user_info
 
-    return redirect(url_for('/home'))
+    return redirect(url_for('home'))
+
+
+@app.route('/')
+def landing_page():
+    return render_template('splash.html')
 
 
 @app.route('/home')
 def home():
     return render_template('home.html', user=session.get('profile'))
+
 
 

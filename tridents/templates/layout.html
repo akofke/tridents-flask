@@ -38,7 +38,7 @@
 
         <div class="nav-right">
             <span class="nav-item">
-                <button class="button is-success is-outlined">Log In</button>
+                <button class="button is-success is-outlined" id="login">Log In</button>
             </span>
         </div>
     </div>
@@ -48,6 +48,7 @@
     {% block content %}{% endblock %}
 </main>
 
+{% include '_login.html' %}
 {% block js %}{% endblock %}
 </body>
 </html>

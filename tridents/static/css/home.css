@@ -1,0 +1,19 @@
+.gcal-games {
+    background: darkred;
+    border-color: darkred;
+}
+
+.gcal-practices {
+    background: rgb(0, 96, 42);
+    border-color: rgb(0, 96, 42);
+}
+
+.gcal-social {
+    background: royalblue;
+    border-color: royalblue;
+}
+
+.gcal-other {
+    background: dimgray;
+    border-color: dimgray;
+}
