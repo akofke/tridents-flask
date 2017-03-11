@@ -60,4 +60,11 @@ def home():
     return render_template('home.html', user=session.get('profile'))
 
 
+@app.route('/logout')
+def logout():
+    session.pop('profile')
+    return redirect(url_for('home'))
+
+
+
 

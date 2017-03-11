@@ -10,7 +10,11 @@
         }
     });
 
-    document.getElementById('login').addEventListener('click', function() {
-        lock.show();
-    });
+    var loginBtn = document.getElementById('login');
+
+    if(loginBtn !== null) {
+        loginBtn.addEventListener('click', function() {
+            lock.show();
+        });
+    }
 </script>

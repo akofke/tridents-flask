@@ -37,8 +37,17 @@
         </div>
 
         <div class="nav-right">
+            {% if user %}
+                <span class="nav-item">
+                    <small>Welcome <b>{{ user['name'] }}</b></small>
+                </span>
+            {% endif %}
             <span class="nav-item">
-                <button class="button is-success is-outlined" id="login">Log In</button>
+                {% if user %}
+                    <a href="{{ url_for('logout') }}" class="button is-danger is-outlined">Log Out</a>
+                {% else %}
+                    <button class="button is-success is-outlined" id="login">Log In</button>
+                {% endif %}
             </span>
         </div>
     </div>
