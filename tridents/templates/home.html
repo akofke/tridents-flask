@@ -15,6 +15,11 @@
     <script>
     $(document).ready(function() {
         $('#calendar').fullCalendar({
+            header: {
+                left: 'month,listYear',
+                center: 'title',
+                right: 'today prev,next'
+            },
             googleCalendarApiKey: 'AIzaSyBJcgtG_tpKU4ewCCTkym4rNtpKisS8KUA',
             eventSources: [
                 {
