@@ -8,6 +8,8 @@ setup(
         'flask',
         'requests',
         'Flask-SqlAlchemy',
-        'psycopg2'
+        'SQLAlchemy-Utils',
+        'psycopg2',
+        'arrow'
     ],
 )

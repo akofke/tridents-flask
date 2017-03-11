@@ -1,8 +1,15 @@
 from flask import request, session, redirect, render_template, url_for
-from tridents import app
+
+from tridents import app, db
+from tridents.models import Post
 
 import json
 import requests
+import arrow
+
+@app.template_filter('datetimeformat')
+def datetimeformat(value: arrow.Arrow, format='%H:%M %d/%m/%Y'):
+    return value.to('US/Eastern').strftime(format)
 
 
 @app.route('/callback')
@@ -41,7 +48,8 @@ def landing_page():
 
 @app.route('/home')
 def home():
-    return render_template('home.html', user=session.get('profile'))
+    posts = Post.query.limit(10).all()
+    return render_template('home.html', user=session.get('profile'), posts=posts)
 
 
 @app.route('/logout')
