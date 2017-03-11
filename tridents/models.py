@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from .tridents import db
+from tridents import db
 
 
 class Post(db.Model):
