@@ -25,15 +25,15 @@
         </div>
 
         <div class="nav-center">
-            <a href="" class="nav-item {{ active('contact') }}">Contact</a>
+            <a href="" class="is-tab nav-item {{ active('contact') }}">Contact</a>
 
-            <a href="" class="nav-item">
+            <a href="{{ url_for('home') }}" class="nav-item" id="Navbar-home-link">
                 <figure class="image" id="Navbar-logo">
                     <img src="{{ url_for('static', filename='img/rugby_trimmed.svg.png') }}" alt="Home">
                 </figure>
             </a>
 
-            <a href="" class="nav-item {{ active('about') }}">About Us</a>
+            <a href="" class="is-tab nav-item {{ active('about') }}">About Us</a>
         </div>
 
         <div class="nav-right">
@@ -56,6 +56,14 @@
 <main role="main" class="section">
     {% block content %}{% endblock %}
 </main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>© 2017</p>
+        </div>
+    </div>
+</footer>
 
 {% include '_login.html' %}
 {% block js %}{% endblock %}

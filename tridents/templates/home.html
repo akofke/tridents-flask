@@ -47,6 +47,16 @@
 {% block content %}
     <div class="container-fluid">
         <div class="columns">
+            {% if user %}
+                <div class="column is-narrow">
+                    <aside class="menu">
+                        <p class="menu-label">Officer Control Panel</p>
+                        <ul class="menu-list">
+                            <li><a href="">Create a Post</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            {% endif %}
             <div class="column is-two-thirds">
                 <div class="box" id="calendar">
                 </div>
