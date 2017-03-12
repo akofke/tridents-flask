@@ -11,6 +11,7 @@ setup(
         'SQLAlchemy-Utils',
         'psycopg2',
         'arrow',
-        'Flask-WTF'
+        'Flask-WTF',
+        'Flask-Migrate'
     ],
 )
