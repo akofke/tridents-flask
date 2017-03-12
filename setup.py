@@ -10,6 +10,7 @@ setup(
         'Flask-SqlAlchemy',
         'SQLAlchemy-Utils',
         'psycopg2',
-        'arrow'
+        'arrow',
+        'Flask-WTF'
     ],
 )

@@ -1,4 +1,7 @@
 from flask import request, session, redirect, render_template, url_for
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField, StringField
+from wtforms.validators import DataRequired
 
 from tridents import app, db
 from tridents.models import Post
@@ -56,3 +59,18 @@ def home():
 def logout():
     session.pop('profile')
     return redirect(url_for('home'))
+
+
+class ContactForm(FlaskForm):
+    message = TextAreaField('Message', validators=[DataRequired()])
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+
+    if form.validate_on_submit():
+        return redirect(url_for('home'))
+
+    return render_template('contact.html', form=form)
+
