@@ -20,3 +20,8 @@ main {
 #Navbar-home-link:hover img {
     filter: drop-shadow(-3px 3px 3px rgba(0, 96, 42, 0.4));
 }
+
+#flashes {
+    padding-top: 1rem;
+    padding-bottom: 0;
+}

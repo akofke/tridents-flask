@@ -7,6 +7,16 @@
         <form method="post" action="{{ url_for('contact') }}">
             {{ form.hidden_tag() }}
 
+            {{ form.sender.label(class='label') }}
+            <p class="control">
+                {{ form.sender(class='input', placeholder='Optional') }}
+            </p>
+
+            {{ form.reach_at.label(class='label') }}
+            <p class="control">
+                {{ form.reach_at(class='input', placeholder='Optional') }}
+            </p>
+
             {{ form.message.label(class='label') }}
             <p class="control">
                 {{ form.message(rows=20, cols=120, class='textarea') }}

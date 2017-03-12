@@ -1,10 +1,10 @@
-from flask import request, session, redirect, render_template, url_for
+from flask import request, session, redirect, render_template, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, StringField
 from wtforms.validators import DataRequired
 
 from tridents import app, db
-from tridents.models import Post
+from tridents.models import Post, ContactMessage
 
 import json
 import requests
@@ -63,6 +63,8 @@ def logout():
 
 class ContactForm(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired()])
+    sender = StringField('Your Name')
+    reach_at = StringField('Email or Phone Number')
 
 
 @app.route('/contact', methods=['GET', 'POST'])
@@ -70,6 +72,16 @@ def contact():
     form = ContactForm()
 
     if form.validate_on_submit():
+        message = ContactMessage(
+            form.message.data,
+            form.sender.data if form.sender.data != '' else None,
+            form.reach_at.data if form.reach_at.data != '' else None
+        )
+
+        db.session.add(message)
+        db.session.commit()
+
+        flash('Message sent successfully. Thank you!', 'is-success')
         return redirect(url_for('home'))
 
     return render_template('contact.html', form=form)
