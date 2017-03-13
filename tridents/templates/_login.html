@@ -2,7 +2,7 @@
 <script>
     var lock = new Auth0Lock('{{ config['AUTH0_CLIENT_ID'] }}', 'tricountyrugby.auth0.com', {
         auth: {
-            redirectUrl: '{{ config['AUTH0_CALLBACK_URL'] }}',
+            redirectUrl: '{{ url_for('callback', _external=True) }}',
             responseType: 'code',
             params: {
                 scope: 'openid email name picture'

@@ -21,21 +21,20 @@ def callback():
 
     json_header = {'content-type': 'application/json'}
 
-    token_url = "https://{domain}/oauth/token".format(domain=app.config.get('AUTH0_CLIENT_DOMAIN'))
+    token_url = "https://{domain}/oauth/token".format(domain=app.config.get('AUTH0_DOMAIN'))
 
     token_payload = {
         'client_id': app.config.get('AUTH0_CLIENT_ID'),
         'client_secret': app.config.get('AUTH0_CLIENT_SECRET'),
-        'redirect_uri': app.config.get('AUTH0_CALLBACK_URL'),
+        'redirect_uri': url_for('callback', _external=True),
         'code': code,
         'grant_type': 'authorization_code'
     }
 
     token_info = requests.post(token_url, data=json.dumps(token_payload), headers=json_header).json()
-    print(token_info)
 
     user_url = "https://{domain}/userinfo?access_token={access_token}" \
-        .format(domain=app.config.get('AUTH0_CLIENT_DOMAIN'), access_token=token_info['access_token'])
+        .format(domain=app.config.get('AUTH0_DOMAIN'), access_token=token_info['access_token'])
 
     user_info = requests.get(user_url).json()
 

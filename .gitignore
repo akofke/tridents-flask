@@ -2,5 +2,4 @@
 .python-version
 __pycache__
 *.egg-info
-
-config.py
+venv
