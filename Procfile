@@ -1,0 +1,1 @@
+web: gunicorn tridents:app --log-file=-
