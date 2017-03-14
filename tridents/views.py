@@ -10,6 +10,7 @@ import json
 import requests
 import arrow
 
+
 @app.template_filter('datetimeformat')
 def datetimeformat(value: arrow.Arrow, format='%H:%M %d/%m/%Y'):
     return value.to('US/Eastern').strftime(format)
@@ -37,6 +38,7 @@ def callback():
         .format(domain=app.config.get('AUTH0_DOMAIN'), access_token=token_info['access_token'])
 
     user_info = requests.get(user_url).json()
+    print(user_info)
 
     session['profile'] = user_info
 
@@ -51,7 +53,8 @@ def landing_page():
 @app.route('/home')
 def home():
     posts = Post.query.limit(10).all()
-    return render_template('home.html', user=session.get('profile'), posts=posts)
+    user = session.get('profile')
+    return render_template('home.html', user=user, is_officer=is_officer(user), posts=posts)
 
 
 @app.route('/logout')
@@ -85,3 +88,9 @@ def contact():
 
     return render_template('contact.html', form=form)
 
+
+def is_officer(user):
+    if user and 'roles' in user:
+        return 'officer' in user.get('roles')
+    else:
+        return False
