@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="title">Create a Post</h3>
+        <form method="post" action="{{ url_for('posts') }}">
+            {{ form.hidden_tag() }}
+
+            {{ form.title.label(class='label') }}
+            <p class="control">
+                {{ form.title(class='input') }}
+            </p>
+
+            {{ form.body.label(class='label') }}
+            <p class="control">
+                {{ form.body(class='textarea') }}
+            </p>
+
+            <input value="Submit" type="submit" class="button is-primary">
+        </form>
+
+    </div>
+{% endblock %}

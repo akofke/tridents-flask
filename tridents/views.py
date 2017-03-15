@@ -1,3 +1,5 @@
+from functools import wraps
+
 from flask import request, session, redirect, render_template, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, StringField
@@ -11,8 +13,18 @@ import requests
 import arrow
 
 
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'profile' not in session:
+            return redirect('home')
+        return f(*args, **kwargs)
+
+    return decorated
+
+
 @app.template_filter('datetimeformat')
-def datetimeformat(value: arrow.Arrow, format='%H:%M %d/%m/%Y'):
+def datetimeformat(value: arrow.Arrow, format='%H:%M %m/%d/%Y'):
     return value.to('US/Eastern').strftime(format)
 
 
@@ -52,9 +64,9 @@ def landing_page():
 
 @app.route('/home')
 def home():
-    posts = Post.query.limit(10).all()
+    posts_list = Post.query.limit(10).all()
     user = session.get('profile')
-    return render_template('home.html', user=user, is_officer=is_officer(user), posts=posts)
+    return render_template('home.html', user=user, is_officer=is_officer(user), posts=posts_list)
 
 
 @app.route('/logout')
@@ -87,6 +99,44 @@ def contact():
         return redirect(url_for('home'))
 
     return render_template('contact.html', form=form)
+
+
+class PostForm(FlaskForm):
+    title = StringField('Title or Subject', validators=[DataRequired()])
+    body = TextAreaField('Post', validators=[DataRequired()])
+
+
+@requires_auth
+@app.route('/posts', methods=['GET', 'POST'])
+def posts():
+    if not is_officer(session.get('profile')):
+        return redirect('home')
+
+    form = PostForm()
+
+    if form.validate_on_submit():
+        post = Post(
+            session.get('profile').get('name'),
+            form.title.data,
+            form.body.data
+        )
+
+        db.session.add(post)
+        db.session.commit()
+
+        flash('Post created successfully.', 'is-success')
+        return redirect(url_for('posts'))
+
+    return render_template('posts.html', form=form)
+
+
+@app.route('/messages')
+def messages():
+    if not is_officer(session.get('profile')):
+        return redirect('home')
+
+    messages_list = ContactMessage.query.all()
+    return render_template('messages.html', messages=messages_list)
 
 
 def is_officer(user):

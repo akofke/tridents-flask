@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block title %}View Messages{% endblock %}
+{% set active_page = 'messages' %}
+
+{% block content %}
+    <div class="container">
+        {% for message in messages %}
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            {% if message.sender %}
+                                <p class="title is-4">{{ message.sender }}</p>
+                            {% endif %}
+                            {% if message.reach_at %}
+                                <p class="subtitle is-6">{{ message.reach_at }}</p>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    <div class="content">
+                        {{ message.message }}
+                    </div>
+
+                    <div class="content">
+                        <small>{{ message.send_date|datetimeformat }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
