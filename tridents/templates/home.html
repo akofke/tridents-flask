@@ -72,7 +72,7 @@
                         </header>
 
                         <div class="card-content">
-                            <div class="content">{{ post.body }}</div>
+                            <div class="content">{{ post.body|truncate }}</div>
                             <div class="content"><small>{{ post.publish_date|datetimeformat }} by <strong>{{ post.author }}</strong></small></div>
                         </div>
                     </div>

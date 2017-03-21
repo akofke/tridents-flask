@@ -64,7 +64,7 @@ def landing_page():
 
 @app.route('/home')
 def home():
-    posts_list = Post.query.limit(10).all()
+    posts_list = Post.query.order_by(Post.publish_date.desc()).limit(10).all()
     user = session.get('profile')
     return render_template('home.html', user=user, is_officer=is_officer(user), posts=posts_list)
 
