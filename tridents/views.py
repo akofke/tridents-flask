@@ -3,7 +3,7 @@ from functools import wraps
 from flask import request, session, redirect, render_template, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, StringField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 
 from tridents import app, db
 from tridents.models import Post, ContactMessage
@@ -98,11 +98,11 @@ def contact():
         flash('Message sent successfully. Thank you!', 'is-success')
         return redirect(url_for('home'))
 
-    return render_template('contact.html', form=form)
+    return render_template('contact.html', form=form, user=session.get('profile'))
 
 
 class PostForm(FlaskForm):
-    title = StringField('Title or Subject', validators=[DataRequired()])
+    title = StringField('Title or Subject', validators=[DataRequired(), Length(max=80, message="Please use a shorter title")])
     body = TextAreaField('Post', validators=[DataRequired()])
 
 
@@ -127,7 +127,7 @@ def posts():
         flash('Post created successfully.', 'is-success')
         return redirect(url_for('posts'))
 
-    return render_template('posts.html', form=form)
+    return render_template('posts.html', form=form, user=session.get('profile'))
 
 
 @app.route('/messages')
@@ -136,7 +136,7 @@ def messages():
         return redirect('home')
 
     messages_list = ContactMessage.query.all()
-    return render_template('messages.html', messages=messages_list)
+    return render_template('messages.html', messages=messages_list, user=session.get('profile'))
 
 
 def is_officer(user):
