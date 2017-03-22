@@ -1,16 +1,13 @@
+import json
 from functools import wraps
 
+import arrow
+import requests
 from flask import request, session, redirect, render_template, url_for, flash
-from flask_wtf import FlaskForm
-from wtforms import TextAreaField, StringField
-from wtforms.validators import DataRequired, Length
 
 from tridents import app, db
+from tridents.forms import ContactForm, PostForm
 from tridents.models import Post, ContactMessage
-
-import json
-import requests
-import arrow
 
 
 def requires_auth(f):
@@ -75,12 +72,6 @@ def logout():
     return redirect(url_for('home'))
 
 
-class ContactForm(FlaskForm):
-    message = TextAreaField('Message', validators=[DataRequired()])
-    sender = StringField('Your Name')
-    reach_at = StringField('Email or Phone Number')
-
-
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
@@ -99,11 +90,6 @@ def contact():
         return redirect(url_for('home'))
 
     return render_template('contact.html', form=form, user=session.get('profile'))
-
-
-class PostForm(FlaskForm):
-    title = StringField('Title or Subject', validators=[DataRequired(), Length(max=80, message="Please use a shorter title")])
-    body = TextAreaField('Post', validators=[DataRequired()])
 
 
 @requires_auth
