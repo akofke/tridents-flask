@@ -3,7 +3,8 @@ from functools import wraps
 
 import arrow
 import requests
-from flask import request, session, redirect, render_template, url_for, flash
+from markdown import markdown
+from flask import request, session, redirect, render_template, url_for, flash, Markup
 
 from tridents import app, db
 from tridents.forms import ContactForm, PostForm
@@ -23,6 +24,12 @@ def requires_auth(f):
 @app.template_filter('datetimeformat')
 def datetimeformat(value: arrow.Arrow, format='%H:%M %m/%d/%Y'):
     return value.to('US/Eastern').strftime(format)
+
+
+@app.template_filter('markdown')
+def markdown_to_html(content):
+    # Markup marks text as safe for jinja (so tags won't get escaped)
+    return Markup(markdown(content))
 
 
 @app.route('/callback')
@@ -114,6 +121,12 @@ def posts():
         return redirect(url_for('posts'))
 
     return render_template('posts.html', form=form, user=session.get('profile'))
+
+
+@app.route('/posts/<int:post_id>')
+def show_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('show_post.html', post=post)
 
 
 @app.route('/messages')

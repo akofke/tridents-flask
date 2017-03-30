@@ -1,5 +1,17 @@
 {% extends 'layout.html' %}
 {% block title %}Posts{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/simplemde.min.css') }}">
+{% endblock %}
+{% block js %}
+    <script src="{{ url_for('static', filename='vendor/simplemde.min.js')  }}"></script>
+    <script>
+    var simplemde = new SimpleMDE({
+        element: document.getElementById('message-body'),
+        forceSync: true
+    })
+    </script>
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -14,7 +26,7 @@
 
             {{ form.body.label(class='label') }}
             <p class="control">
-                {{ form.body(class='textarea') }}
+                {{ form.body(class='textarea', id='message-body') }}
             </p>
 
             <input value="Submit" type="submit" class="button is-primary">

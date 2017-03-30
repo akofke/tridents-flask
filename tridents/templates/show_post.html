@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="title is-2">{{ post.title }}</h2>
+    <h4 class="subtitle"><small>Posted by <b>{{ post.author }}</b> at <b>{{ post.publish_date|datetimeformat }}</b></small></h4>
+    <div class="content box">
+        {{ post.body|markdown }}
+    </div>
+</div>
+{% endblock %}

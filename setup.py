@@ -12,6 +12,7 @@ setup(
         'psycopg2',
         'arrow',
         'Flask-WTF',
-        'Flask-Migrate'
+        'Flask-Migrate',
+        'markdown'
     ],
 )

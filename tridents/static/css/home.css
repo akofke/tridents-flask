@@ -25,3 +25,8 @@
 .fc-list-item:hover {
     color: #4a4a4a;
 }
+
+.post-link:hover > .card {
+    /* inherit from bulma and change color */
+    box-shadow: 0 2px 3px rgba(0, 96, 42, 0.4), 0 0 0 1px rgba(0,96,42,.4);
+}

@@ -66,16 +66,18 @@
                 <h1 class="title">Posts</h1>
 
                 {% for post in posts %}
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">{{ post.title }}</p>
-                        </header>
+                    <a href="{{ url_for('show_post', post_id=post.id) }}" class="post-link">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">{{ post.title }}</p>
+                            </header>
 
-                        <div class="card-content">
-                            <div class="content">{{ post.body|truncate }}</div>
-                            <div class="content"><small>{{ post.publish_date|datetimeformat }} by <strong>{{ post.author }}</strong></small></div>
+                            <div class="card-content">
+                                <div class="content">{{ post.body|truncate }}</div>
+                                <div class="content"><small>{{ post.publish_date|datetimeformat }} by <strong>{{ post.author }}</strong></small></div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                 {% endfor %}
 
