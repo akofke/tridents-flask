@@ -13,6 +13,7 @@ setup(
         'arrow',
         'Flask-WTF',
         'Flask-Migrate',
-        'markdown'
+        'markdown',
+        'BeautifulSoup4'
     ],
 )

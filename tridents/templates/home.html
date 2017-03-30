@@ -67,13 +67,13 @@
 
                 {% for post in posts %}
                     <a href="{{ url_for('show_post', post_id=post.id) }}" class="post-link">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">{{ post.title }}</p>
+                        <div class="message post-preview">
+                            <header class="message-header">
+                                <p>{{ post.title }}</p>
                             </header>
 
-                            <div class="card-content">
-                                <div class="content">{{ post.body|truncate }}</div>
+                            <div class="message-body">
+                                <div class="content is-small">{{ post.body|markdown|truncate_html|safe }}</div>
                                 <div class="content"><small>{{ post.publish_date|datetimeformat }} by <strong>{{ post.author }}</strong></small></div>
                             </div>
                         </div>

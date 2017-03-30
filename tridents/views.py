@@ -4,6 +4,7 @@ from functools import wraps
 import arrow
 import requests
 from markdown import markdown
+from bs4 import BeautifulSoup
 from flask import request, session, redirect, render_template, url_for, flash, Markup
 
 from tridents import app, db
@@ -30,6 +31,15 @@ def datetimeformat(value: arrow.Arrow, format='%H:%M %m/%d/%Y'):
 def markdown_to_html(content):
     # Markup marks text as safe for jinja (so tags won't get escaped)
     return Markup(markdown(content))
+
+
+@app.template_filter('truncate_html')
+def bs_prettify(html, length=160):
+    truncated = str(BeautifulSoup(html[:length], "html.parser"))
+    if len(truncated) < len(html):
+        truncated += "<span>...</span>"
+
+    return truncated
 
 
 @app.route('/callback')
