@@ -32,12 +32,44 @@
 
             <div class="columns has-text-centered" id="SplashPage-nav">
                 <div class="column">
-                    <a href="{{ url_for('home') }}" class="button is-info is-inverted is-large is-outlined">News & Events</a>
+                    <a href="{{ url_for('home') }}" class="button is-outlined is-inverted is-primary is-large">Home</a>
+                </div>
+                <div class="column">
+                    <a href="" class="button is-outlined is-inverted is-primary is-large">Join the Team</a>
+                </div>
+                <div class="column">
+                    <a href="{{ url_for('contact') }}" class="button is-outlined is-inverted is-primary is-large">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-foot is-hidden-mobile">
+        <div class="container">
+            <p class="title is-4 has-text-centered">Scroll down to read more</p>
+            <p class="subtitle has-text-centered" id="down-arrow"><i class="fa fa-2x fa-chevron-down"></i></p>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-medium is-light is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-narrow">
+                    <img src="{{ url_for('static', filename='img/team2_square.jpg') }}" alt="" class="is-square" id="team-round">
+                </div>
+                <div class="column">
+                    <h1 class="title is-1">Who are we?</h1>
+                    <p class="content is-large">
+                    </p>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<script src="https://use.fontawesome.com/2ce45b9f6b.js"></script>
 </body>
 </html>
