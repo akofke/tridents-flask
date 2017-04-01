@@ -52,6 +52,19 @@
     filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
 }
 
+#home-link {
+    color: #23d160;
+}
+
+#home-link:hover {
+    color: #30b05f;
+}
+
+#home-link .fa {
+    vertical-align: baseline;
+    margin-left: 1rem;
+}
+
 #down-arrow {
     padding-bottom: 20px;
 }
