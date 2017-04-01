@@ -39,7 +39,7 @@ def bs_prettify(html, length=160):
     if len(truncated) < len(html):
         truncated += "<span>...</span>"
 
-    return truncated
+    return Markup(truncated)
 
 
 @app.route('/callback')

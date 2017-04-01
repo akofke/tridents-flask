@@ -30,6 +30,9 @@
     margin-bottom: 1.5rem;
 }
 
-a.post-link:hover > .post-preview {
-    box-shadow: 0 0 3px 2px rgba(0, 96, 42, 0.5);
+a.post-link:hover > .message-header {
+    background-color: #3a3a3a;
+    text-decoration: underline;
+
 }
+
