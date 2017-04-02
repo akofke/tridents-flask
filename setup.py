@@ -14,6 +14,7 @@ setup(
         'Flask-WTF',
         'Flask-Migrate',
         'markdown',
-        'BeautifulSoup4'
+        'BeautifulSoup4',
+        'bleach'
     ],
 )
