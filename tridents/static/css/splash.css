@@ -81,3 +81,17 @@
 #why-rugby .content {
     color: whitesmoke;
 }
+
+#join-section .content {
+    color: whitesmoke;
+}
+
+#join-section a {
+    color: #bce8f1;
+    text-decoration: underline;
+}
+
+#join-section a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
