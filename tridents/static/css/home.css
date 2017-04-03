@@ -26,6 +26,10 @@
     color: #4a4a4a;
 }
 
+.fc-toolbar .fc-center {
+    font-size: large;
+}
+
 .box#calendar {
     /*box-shadow: 0 0 0 2px rgba(17, 163, 105, 0.62), 0 2px 3px rgba(10,10,10,.1);*/
     box-shadow: 0 0 0 2px rgba(27, 105, 128, 0.62), 0 2px 3px rgba(10,10,10,.1);
