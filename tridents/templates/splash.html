@@ -50,13 +50,13 @@
 
     <div class="hero-foot is-hidden-mobile">
         <div class="container">
-            <p class="title is-4 has-text-centered">Scroll down to read more</p>
-            <p class="subtitle has-text-centered" id="down-arrow"><i class="fa fa-2x fa-chevron-down"></i></p>
+            <p class="scrolldown title is-4 has-text-centered">Scroll down to read more</p>
+            <p class="scrolldown subtitle has-text-centered" id="down-arrow"><i class="fa fa-2x fa-chevron-down"></i></p>
         </div>
     </div>
 </section>
 
-<section class="hero is-medium is-light is-bold">
+<section class="hero is-medium is-light is-bold" id="why-rugby-section">
     <div class="hero-body">
         <div class="container">
             <div class="columns">
@@ -91,5 +91,7 @@
 </section>
 
 <script src="https://use.fontawesome.com/2ce45b9f6b.js"></script>
+<script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/splash.js') }}"></script>
 </body>
 </html>
