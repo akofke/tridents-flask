@@ -51,8 +51,8 @@
                     <aside class="menu">
                         <p class="menu-label">Officer Control Panel</p>
                         <ul class="menu-list">
-                            <li><a href="{{ url_for('posts') }}"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create a Post</a></li>
-                            <li><a href="{{ url_for('messages') }}"><i class="fa fa-fw fa-envelope"></i>&nbsp;View Messages</a></li>
+                            <li><a href="{{ url_for('officers.posts') }}"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create a Post</a></li>
+                            <li><a href="{{ url_for('officers.messages') }}"><i class="fa fa-fw fa-envelope"></i>&nbsp;View Messages</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -68,7 +68,7 @@
 
                 {% for post in posts %}
                         <div class="message post-preview">
-                            <a href="{{ url_for('show_post', post_id=post.id) }}" class="post-link">
+                            <a href="{{ url_for('home.show_post', post_id=post.id) }}" class="post-link">
                                 <header class="message-header">
                                     <p>{{ post.title }}</p>
                                 </header>

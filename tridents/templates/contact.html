@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <form method="post" action="{{ url_for('contact') }}">
+        <form method="post" action="{{ url_for('home.contact') }}">
             {{ form.hidden_tag() }}
 
             {{ form.sender.label(class='label') }}

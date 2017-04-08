@@ -29,20 +29,20 @@
                     <p>A social rugby club based in Lockport, NY welcoming players of all ages and experience.</p>
 
                     <p id="home-link-p">
-                        <a id="home-link" href="{{ url_for('home') }}">Click to see the latest events and announcements<i class="fa fa-arrow-circle-right"></i></a>
+                        <a id="home-link" href="{{ url_for('home.homepage') }}">Click to see the latest events and announcements<i class="fa fa-arrow-circle-right"></i></a>
                     </p>
                 </div>
             </div>
 
             <div class="columns has-text-centered" id="SplashPage-nav">
                 <div class="column">
-                    <a href="{{ url_for('home') }}" class="button is-outlined is-inverted is-primary is-large">Home</a>
+                    <a href="{{ url_for('home.homepage') }}" class="button is-outlined is-inverted is-primary is-large">Home</a>
                 </div>
                 <div class="column">
                     <a href="" class="button is-outlined is-inverted is-primary is-large">Join the Team</a>
                 </div>
                 <div class="column">
-                    <a href="{{ url_for('contact') }}" class="button is-outlined is-inverted is-primary is-large">Contact</a>
+                    <a href="{{ url_for('home.contact') }}" class="button is-outlined is-inverted is-primary is-large">Contact</a>
                 </div>
             </div>
         </div>
@@ -119,10 +119,10 @@
                         <p>
                             We welcome all new players, even those who have never touched a rugby ball before.
                             If you're interested, come to a practice!
-                            <a href="{{ url_for('home') }}">Click here to see the latest schedule</a>.
+                            <a href="{{ url_for('home.homepage') }}">Click here to see the latest schedule</a>.
                             We hold practices at two locations for the convenience of our team members,
                             one in Lockport and one near Pembroke. If you have any questions feel free to
-                            <a href="{{ url_for('contact') }}">contact us here</a> and we'll get back to you
+                            <a href="{{ url_for('home.contact') }}">contact us here</a> and we'll get back to you
                             as soon as possible.
                         </p>
                     </div>

@@ -14,7 +14,7 @@ def landing_page():
 
 
 @home.route('/home')
-def home():
+def homepage():
     posts_list = Post.query.order_by(Post.publish_date.desc()).limit(10).all()
     user = session.get('profile')
     return render_template('home.html', user=user, posts=posts_list)
@@ -67,3 +67,9 @@ def callback():
     session['profile'] = user_info
 
     return redirect(url_for('home'))
+
+
+@app.route('/posts/<int:post_id>')
+def show_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('show_post.html', post=post)

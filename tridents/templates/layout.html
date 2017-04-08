@@ -25,9 +25,9 @@
         </div>
 
         <div class="nav-center">
-            <a href="{{ url_for('contact') }}" class="is-tab nav-item {{ active('contact') }}">Contact</a>
+            <a href="{{ url_for('home.contact') }}" class="is-tab nav-item {{ active('contact') }}">Contact</a>
 
-            <a href="{{ url_for('home') }}" class="nav-item" id="Navbar-home-link">
+            <a href="{{ url_for('home.homepage') }}" class="nav-item" id="Navbar-home-link">
                 <figure class="image" id="Navbar-logo">
                     <img src="{{ url_for('static', filename='img/rugby_trimmed.svg.png') }}" alt="Home">
                 </figure>
