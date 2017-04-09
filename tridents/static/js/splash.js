@@ -1,3 +1,3 @@
 $('.scrolldown').click(function () {
-    $('html, body').animate({ scrollTop: $('#why-rugby-section').offset().top})
+    $('html, body').animate({ scrollTop: $('#about-section').offset().top})
 });

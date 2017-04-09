@@ -8,7 +8,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-
     AUTH0_CLIENT_ID = environ.get('AUTH0_CLIENT_ID')
     AUTH0_CLIENT_SECRET = environ.get('AUTH0_CLIENT_SECRET')
     AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')

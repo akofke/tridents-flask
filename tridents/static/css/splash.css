@@ -74,12 +74,25 @@
 }
 
 #team-round {
-    max-width: 400px;
+    max-width: 90%;
     border-radius: 50%;
+}
+
+#about-section p.content {
+    line-height: 2;
+}
+
+#why-rugby {
+    background: url("/static/img/stardust.png") repeat;
 }
 
 #why-rugby .content {
     color: whitesmoke;
+}
+
+#why-rugby img {
+    max-width: 100%;
+    border-radius: 50%;
 }
 
 #join-section .content {
