@@ -44,6 +44,9 @@
                 <div class="column">
                     <a href="{{ url_for('contact') }}" class="button is-outlined is-inverted is-primary is-large">Contact</a>
                 </div>
+                <div class="column">
+                    <button id="login" class="button is-outlined is-inverted is-primary is-large">Team Login</button>
+                </div>
             </div>
         </div>
     </div>
@@ -94,18 +97,25 @@
 
                         <img src="{{ url_for('static', filename='img/brad.jpg') }}" alt="" class="is-square" id="celtic-fest">
                         <h2 class="title">A Brotherhood for Life</h2>
-                        <p>blah blah blah</p>
+                        <p class="has-text-left">
+                            We have a close-knit team that gets together for many activities outside of rugby:
+                            socials, community service, camping trips, and more. You'll be sure to meet friends and
+                            make memories that last a lifetime.
+                        </p>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="content is-large">
-                        <img src="{{ url_for('static', filename='img/jim-running.jpg') }}" alt="" class="is-square" id="celtic-fest">
+                        <img src="{{ url_for('static', filename='img/jim-running.jpg') }}" alt="" class="is-square" id="bigjim">
                         <h2 class="title">The World's Most Exciting Team Sport</h2>
-                        <p>blah blah blah</p>
+                        <p>
+                            Rugby
+                        </p>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="content is-large">
+                        <img src="{{ url_for('static', filename='img/beach.jpg') }}" alt="" class="is-square" id="beach">
                         <h2 class="title">Get in Shape</h2>
                         <p>blah blah blah</p>
                     </div>
@@ -150,5 +160,6 @@
 <script src="https://use.fontawesome.com/2ce45b9f6b.js"></script>
 <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/splash.js') }}"></script>
+{% include "includes/_login.html" %}
 </body>
 </html>
