@@ -1,4 +1,5 @@
-{% extends 'layout.html' %}
+{% extends 'officer_layout.html' %}
+{% set active_page = 'post' %}
 {% block title %}Posts{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/simplemde.min.css') }}">
@@ -13,24 +14,21 @@
     </script>
 {% endblock %}
 
-{% block content %}
-    <div class="container">
-        <h3 class="title">Create a Post</h3>
-        <form method="post" action="{{ url_for('posts') }}">
-            {{ form.hidden_tag() }}
+{% block officer_content %}
+    <h3 class="title">Create a Post</h3>
+    <form method="post" action="{{ url_for('posts') }}">
+        {{ form.hidden_tag() }}
 
-            {{ form.title.label(class='label') }}
-            <p class="control">
-                {{ form.title(class='input') }}
-            </p>
+        {{ form.title.label(class='label') }}
+        <p class="control">
+            {{ form.title(class='input') }}
+        </p>
 
-            {{ form.body.label(class='label') }}
-            <p class="control">
-                {{ form.body(class='textarea', id='message-body') }}
-            </p>
+        {{ form.body.label(class='label') }}
+        <p class="control">
+            {{ form.body(class='textarea', id='message-body') }}
+        </p>
 
-            <input value="Submit" type="submit" class="button is-primary">
-        </form>
-
-    </div>
+        <input value="Submit" type="submit" class="button is-primary">
+    </form>
 {% endblock %}

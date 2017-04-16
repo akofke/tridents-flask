@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-narrow">
+                <aside class="menu">
+                    <p class="menu-label">Officer Control Panel</p>
+                    <ul class="menu-list">
+                        <li><a href="{{ url_for('posts') }}" class="{{ active('post') }}"><i class="fa fa-fw fa-pencil"></i>&nbsp;Create a Post</a></li>
+                        <li><a href="{{ url_for('messages') }}" class="{{ active('messages') }}"><i class="fa fa-fw fa-envelope"></i>&nbsp;View Messages</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="column">
+                {% block officer_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

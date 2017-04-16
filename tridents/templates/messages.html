@@ -1,37 +1,35 @@
-{% extends 'layout.html' %}
+{% extends 'officer_layout.html' %}
 {% block title %}View Messages{% endblock %}
 {% set active_page = 'messages' %}
 
-{% block content %}
-    <div class="container">
-        <h1 class="title">Messages</h1>
-        <h3 class="subtitle">sent to the team using the Contact form</h3>
-        {% for message in messages %}
+{% block officer_content %}
+    <h1 class="title">Messages</h1>
+    <h3 class="subtitle">sent to the team using the Contact form</h3>
+    {% for message in messages %}
 
-            <div class="card">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            {% if message.sender %}
-                                <p class="title is-4">{{ message.sender }}</p>
-                            {% endif %}
-                            {% if message.reach_at %}
-                                <p class="subtitle is-6">{{ message.reach_at }}</p>
-                            {% endif %}
-                        </div>
-
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        {% if message.sender %}
+                            <p class="title is-4">{{ message.sender }}</p>
+                        {% endif %}
+                        {% if message.reach_at %}
+                            <p class="subtitle is-6">{{ message.reach_at }}</p>
+                        {% endif %}
                     </div>
 
-                    <div class="content">
-                        {{ message.message }}
-                    </div>
+                </div>
 
-                    <div class="content">
-                        <small>{{ message.send_date|datetimeformat }}</small>
-                    </div>
+                <div class="content">
+                    {{ message.message }}
+                </div>
+
+                <div class="content">
+                    <small>{{ message.send_date|datetimeformat }}</small>
                 </div>
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
 
-    </div>
 {% endblock %}
