@@ -36,7 +36,7 @@ def markdown_to_html(content):
 
 
 @app.template_filter('truncate_html')
-def truncate_html(html, length=160):
+def truncate_html(html, length=300):
     truncated = str(BeautifulSoup(html[:length], "html.parser"))
     if len(truncated) < len(html):
         truncated += "<span>...</span>"
