@@ -109,7 +109,8 @@
                         <img src="{{ url_for('static', filename='img/jim-running.jpg') }}" alt="" class="is-square" id="bigjim">
                         <h2 class="title">The World's Most Exciting Team Sport</h2>
                         <p>
-                            Rugby
+                            Rugby is fast-paced and physical. Whether you like to tackle, wrestle, sprint, or kick,
+                            there's nothing that beats the adrenaline rush of a game.
                         </p>
                     </div>
                 </div>
@@ -117,7 +118,11 @@
                     <div class="content is-large">
                         <img src="{{ url_for('static', filename='img/beach.jpg') }}" alt="" class="is-square" id="beach">
                         <h2 class="title">Get in Shape</h2>
-                        <p>blah blah blah</p>
+                        <p>
+                            Training for rugby will help you improve in nearly all areas of fitness and will make you
+                            a better overall athlete. You'll gain speed, strength, endurance, and a physical and mental
+                            toughness you never knew you had.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -137,7 +142,7 @@
                             If you're interested, come to a practice!
                             <a href="{{ url_for('home') }}">Click here to see the latest schedule</a>.
                             We hold practices at two locations for the convenience of our team members,
-                            one in Lockport and one near Pembroke. If you have any questions feel free to
+                            one in Lockport and one in Batavia. If you have any questions feel free to
                             <a href="{{ url_for('contact') }}">contact us here</a> and we'll get back to you
                             as soon as possible.
                         </p>
@@ -149,7 +154,7 @@
                     {% include 'includes/_lockport_map.html' %}
                 </div>
                 <div class="column">
-                    {% include 'includes/_pembroke_map.html' %}
+                    {% include 'includes/_batavia_map.html' %}
                 </div>
 
             </div>
