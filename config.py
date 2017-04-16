@@ -3,6 +3,7 @@ from os import environ
 
 class Config:
     DEBUG = True
+    PROD = False
     SECRET_KEY = 'development key'
 
     SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
@@ -24,4 +25,5 @@ class StagingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
+    PROD = True
     SECRET_KEY = environ.get('SECRET_KEY')
