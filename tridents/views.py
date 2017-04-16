@@ -111,6 +111,11 @@ def contact():
     return render_template('contact.html', form=form, user=session.get('profile'))
 
 
+@app.route('/join')
+def join():
+    return render_template('join.html', user=session.get('profile'))
+
+
 @requires_auth
 @app.route('/posts', methods=['GET', 'POST'])
 def posts():
