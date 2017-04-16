@@ -15,6 +15,7 @@ setup(
         'Flask-Migrate',
         'markdown',
         'BeautifulSoup4',
-        'bleach'
+        'bleach',
+        'Flask-SSLify'
     ],
 )
