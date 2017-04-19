@@ -75,6 +75,9 @@ def callback():
 
 @app.route('/')
 def landing_page():
+    if 'profile' in session:
+        return redirect(url_for('home'))
+
     return render_template('splash.html')
 
 
