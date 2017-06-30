@@ -154,7 +154,7 @@ def messages():
     if not is_officer(session.get('profile')):
         return redirect('home')
 
-    messages_list = ContactMessage.query.all()
+    messages_list = ContactMessage.query.order_by(ContactMessage.send_date.desc()).all()
     return render_template('messages.html', messages=messages_list, user=session.get('profile'))
 
 
